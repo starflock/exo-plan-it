@@ -29,10 +29,10 @@ function App() {
         <Container>
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="2">
-              <Link to="/create"><Button variant="primary" className ="full-width-btn">Reset</Button></Link>
+              <Link to="/"><Button variant="primary" className ="full-width-btn">Reset</Button></Link>
             </Col>
             <Col xs lg="2">
-              <Button variant="primary" className ="full-width-btn">Create</Button>
+              <Link to="/create"><Button variant="primary" className ="full-width-btn">Create</Button></Link>
             </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
