@@ -13,6 +13,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,13 +56,24 @@ function App() {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       </header>
       <body className="App-body">
         <Container>
-            <Typography id="discrete-slider" gutterBottom>
-                Temperature
-            </Typography>
-            <Slider
+          <Row className="justify-content-md-center custom-row-spacing">
+            <img src={logo} className="App-logo" alt="logo" />
+          </Row>
+          <Row className="justify-content-md-center custom-row-spacing">
+            <h1 className="custom-h1">
+              Welcome to exoPlanIt
+            </h1>
+          </Row>
+          <Row className="justify-content-md-center custom-row-spacing">
+            <Col xs lg="4">
+              <Typography id="discrete-slider" gutterBottom>
+                <h4 className="custom-h4">Temperature</h4>
+              </Typography>
+              <AwesomeSlider
                 defaultValue={30}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
@@ -70,14 +82,58 @@ function App() {
                 marks
                 min={10}
                 max={110}
-            />
-          <Row className="justify-content-md-center custom-row-spacing">
-            <img src={logo} className="App-logo" alt="logo" />
+              />
+            </Col>
+            <Col xs lg="4">
+              <Typography id="discrete-slider" gutterBottom>
+                <h4 className="custom-h4">Temperature</h4>
+              </Typography>
+              <AwesomeSlider
+                defaultValue={30}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={10}
+                max={110}
+                color={"yellow"}
+              />
+            </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
-            <h1 className="custom-h1">
-              Welcome to exoPlanIt
-            </h1>
+            <Col xs lg="4">
+              <Typography id="discrete-slider" gutterBottom>
+                <h4 className="custom-h4">Temperature</h4>
+              </Typography>
+              <AwesomeSlider
+                defaultValue={30}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={10}
+                max={110}
+                color={"yellow"}
+              />
+            </Col>
+            <Col xs lg="4">
+              <Typography id="discrete-slider" gutterBottom>
+                <h4 className="custom-h4">Temperature</h4>
+              </Typography>
+              <AwesomeSlider
+                defaultValue={30}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={10}
+                max={110}
+                color={"yellow"}
+              />
+            </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="2">
@@ -165,5 +221,35 @@ function Solar() {
     </div>
   );
 }
+
+const AwesomeSlider = withStyles({
+  root: {
+    color: '#ffc107',
+    height: 8,
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus,&:hover,&$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
 
 export default Routing;
