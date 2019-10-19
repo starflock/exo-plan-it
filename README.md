@@ -85,6 +85,6 @@ git push heroku master
 
 ***Docker Commands***
 ```
-#   sudo docker build -t exo_planet_backend .
-#   sudo docker run -it -p 5001:5001 exo_planet_backend
+sudo docker build -t exo_planet_backend .
+sudo docker run -it -p 5001:5001 exo_planet_backend
 ```
