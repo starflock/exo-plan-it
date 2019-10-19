@@ -209,6 +209,33 @@ function Create() {
           <h1 className="custom-h1">Create Your Plannet</h1>
         </Row>
         <Row className="justify-content-md-center custom-row-spacing">
+        <Col xs lg="4">
+        <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%'}}>Username</label>
+        <input
+            className="form-control"
+            type="input"
+            name="username"/>
+        </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+        <Col xs lg="4">
+        <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%'}}>Password</label>
+        <input
+            className="form-control"
+            type="password"
+            name="password"/>
+        </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+        <Col xs lg="4">
+        <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%'}}>Planet Name</label>
+        <input
+            className="form-control"
+            type="input"
+            name="planetName"/>
+        </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
           <Col xs lg="2">
             <Button variant="warning" className="full-width-btn">Save</Button>
           </Col>
