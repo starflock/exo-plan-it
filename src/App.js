@@ -227,6 +227,15 @@ function Create() {
         </Col>
         </Row>
         <Row className="justify-content-md-center custom-row-spacing">
+        <Col xs lg="4">
+        <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%'}}>Planet Name</label>
+        <input
+            className="form-control"
+            type="input"
+            name="planetName"/>
+        </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
           <Col xs lg="2">
             <Button variant="warning" className="full-width-btn">Save</Button>
           </Col>
