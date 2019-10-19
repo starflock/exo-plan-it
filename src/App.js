@@ -42,7 +42,7 @@ function App() {
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="4">
-              <Button variant="warning" className="full-width-btn">View Solar System</Button>
+              <Link to="/solar"><Button variant="warning" className="full-width-btn">View Solar System</Button></Link>
             </Col>
           </Row>
         </Container>
@@ -61,6 +61,9 @@ function Routing() {
         <Route path="/create">
           <Create />
         </Route>
+        <Route path="/solar">
+          <Solar />
+        </Route>
       </Switch>
     </Router>
   )
@@ -72,6 +75,31 @@ function Create() {
       <Container>
         <Row className="justify-content-md-center custom-row-spacing">
           <h1 className="custom-h1">Create Your Plannet</h1>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <Col xs lg="2">
+            <Button variant="warning" className="full-width-btn">Save</Button>
+          </Col>
+          <Col xs lg="2">
+            <Button variant="warning" className="full-width-btn">Try Again</Button>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <Col xs lg="4">
+            <Link to="/"><Button variant="warning" className="full-width-btn">Homepage</Button></Link>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
+
+function Solar() {
+  return (
+    <div className="App-body">
+      <Container>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <h1 className="custom-h1">View Solar System</h1>
         </Row>
         <Row className="justify-content-md-center custom-row-spacing">
           <Col xs lg="2">
