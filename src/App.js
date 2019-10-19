@@ -74,7 +74,7 @@ function App() {
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
               <AwesomeSlider
-                defaultValue={30}
+                defaultValue={0}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
@@ -89,7 +89,7 @@ function App() {
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
               <AwesomeSlider
-                defaultValue={30}
+                defaultValue={0}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
@@ -106,7 +106,7 @@ function App() {
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
               <AwesomeSlider
-                defaultValue={30}
+                defaultValue={0}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
@@ -121,7 +121,7 @@ function App() {
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
               <AwesomeSlider
-                defaultValue={30}
+                defaultValue={0}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
