@@ -42,6 +42,7 @@ const marks = [
     label: '100°C',
   },
 ];
+
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -74,22 +75,22 @@ function App() {
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
+                <h4 className="custom-h4">Solar Mass (M/Msun)</h4>
               </Typography>
               <AwesomeSlider
-                defaultValue={0}
+                defaultValue={0.1}
                 getAriaValueText={valuetext}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
-                step={10}
+                step={.5}
                 marks
-                min={0}
-                max={100}
+                min={0.1}
+                max={60}
               />
             </Col>
             <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
+                <h4 className="custom-h4">Orbital Distance</h4>
               </Typography>
               <AwesomeSlider
                 defaultValue={0}
@@ -98,8 +99,8 @@ function App() {
                 valueLabelDisplay="auto"
                 step={10}
                 marks
-                min={0}
-                max={100}
+                min={0.001}
+                max={100000}
               />
             </Col>
           </Row>
@@ -116,7 +117,7 @@ function App() {
                 step={10}
                 marks
                 min={0}
-                max={100}
+                max={60}
               />
             </Col>
             <Col xs="12" md="4">
