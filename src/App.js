@@ -3,7 +3,7 @@ import logo from './Static/logo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import { Container, Grid, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -60,16 +60,19 @@ function App() {
       </header>
       <body className="App-body">
         <Container>
-          <Row className="justify-content-md-center custom-row-spacing">
-            <img src={logo} className="App-logo" alt="logo" />
+          <Row className="center-box">
+            <figure className="App-figure">
+              <img src={logo} className="App-logo" alt="logo" />
+            </figure>
           </Row>
-          <Row className="justify-content-md-center custom-row-spacing">
+          <Row className="center-box custom-row-spacing">
             <h1 className="custom-h1">
               Welcome to exoPlanIt
             </h1>
           </Row>
+          <div className="gutter"></div>
           <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs lg="4">
+            <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
@@ -84,7 +87,7 @@ function App() {
                 max={110}
               />
             </Col>
-            <Col xs lg="4">
+            <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
@@ -102,7 +105,7 @@ function App() {
             </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs lg="4">
+            <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
@@ -115,10 +118,9 @@ function App() {
                 marks
                 min={10}
                 max={110}
-                color={"yellow"}
               />
             </Col>
-            <Col xs lg="4">
+            <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
                 <h4 className="custom-h4">Temperature</h4>
               </Typography>
@@ -131,7 +133,6 @@ function App() {
                 marks
                 min={10}
                 max={110}
-                color={"yellow"}
               />
             </Col>
           </Row>

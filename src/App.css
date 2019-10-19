@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  width:100%;
 }
 
 .App-header {
@@ -30,9 +30,10 @@
 
 .App-body{
   display:flex;
-  height: 100vh;
   align-items: center;
   background-image: url("Static/star.png");
+  height: 100vh;
+  position: fix;
 }
 
 .custom-h1{
@@ -41,4 +42,17 @@
 
 .custom-h4{
   color: white;
+}
+
+.App-figure{
+  width:25%;
+}
+
+.center-box{
+  display:flex;
+  justify-content: center;
+}
+
+.gutter{
+  padding: 20px;
 }
