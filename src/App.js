@@ -80,8 +80,8 @@ function App() {
                 valueLabelDisplay="auto"
                 step={10}
                 marks
-                min={10}
-                max={110}
+                min={0}
+                max={100}
               />
             </Col>
             <Col xs lg="4">
@@ -95,9 +95,8 @@ function App() {
                 valueLabelDisplay="auto"
                 step={10}
                 marks
-                min={10}
-                max={110}
-                color={"yellow"}
+                min={0}
+                max={100}
               />
             </Col>
           </Row>
@@ -113,9 +112,8 @@ function App() {
                 valueLabelDisplay="auto"
                 step={10}
                 marks
-                min={10}
-                max={110}
-                color={"yellow"}
+                min={0}
+                max={100}
               />
             </Col>
             <Col xs lg="4">
@@ -129,9 +127,8 @@ function App() {
                 valueLabelDisplay="auto"
                 step={10}
                 marks
-                min={10}
-                max={110}
-                color={"yellow"}
+                min={0}
+                max={100}
               />
             </Col>
           </Row>
