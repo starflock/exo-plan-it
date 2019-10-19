@@ -5,8 +5,8 @@
 #
 # Usage:
 #
-#   sudo docker build -t backend .
-#   sudo docker run -it -p 5001:5001 backend
+#   sudo docker build -t exo_planet_backend .
+#   sudo docker run -it -p 5001:5001 exo_planet_backend
 #
 # Pull the base image.
 FROM python:3

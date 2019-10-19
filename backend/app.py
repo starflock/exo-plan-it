@@ -9,7 +9,7 @@ cred = credentials.Certificate('starflock-exo-planet-firebase-key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 todo_ref = db.collection('todos')
-import pdb; pdb.set_trace()
+# import pdb; pdb.set_trace()
 @app.route('/add', methods=['POST'])
 def create():
     """
