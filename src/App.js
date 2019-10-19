@@ -12,6 +12,7 @@ function App() {
         </p>
         <button variant="primary">Reset</button>
         <button variant="primary">Create</button>
+        <button variant="primary">View Solar System</button>
       </header>
     </div>
   );
