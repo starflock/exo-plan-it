@@ -222,7 +222,7 @@ function Create() {
         <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%'}}>Password</label>
         <input
             className="form-control"
-            type="input"
+            type="password"
             name="password"/>
         </Col>
         </Row>
