@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 
-Sentry.init({dsn: "https://1ff47f0de2b94685a7c54c4ee8641273@sentry.io/1784839"});
+Sentry.init({ dsn: "https://1ff47f0de2b94685a7c54c4ee8641273@sentry.io/1784839" });
 
 
 
@@ -55,7 +55,19 @@ function valuetext(value) {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { massSlider: 0.1, distanceSlider: 0, tempSlider: 0, slider4: 0 }
+    this.state = {
+      massSlider: localStorage.getItem("massSlider") || 0.1,
+      distanceSlider: localStorage.getItem("distanceSlider") || 0,
+      tempSlider: localStorage.getItem("tempSlider") || 0,
+      slider4: localStorage.getItem("slider4") || 0
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("massSlider", this.massSlider);
+    localStorage.setItem("distanceSlider", this.distanceSlider);
+    localStorage.setItem("tempSlider", this.tempSlider);
+    localStorage.setItem("slider4", this.slider4);
   }
 
   render() {
@@ -89,7 +101,7 @@ class App extends React.Component {
                   <h4 className="custom-h4">Solar Mass (M/Msun)</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("massSlider")}
+                  defaultValue={this.state.massSlider}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
@@ -97,10 +109,7 @@ class App extends React.Component {
                   marks
                   min={0.1}
                   max={60}
-                  onChange={(event, value) => {
-                    localStorage.setItem("massSlider", value);
-                    this.setState({ massSlider: value });
-                  }}
+                  onChangeCommitted={(event, value) => this.setState({ massSlider: value })}
                 />
               </Col>
               <Col xs="12" md="4">
@@ -108,7 +117,7 @@ class App extends React.Component {
                   <h4 className="custom-h4">Orbital Distance (AU)</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("distanceSlider")}
+                  defaultValue={this.state.distanceSlider}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
@@ -116,10 +125,7 @@ class App extends React.Component {
                   marks
                   min={0.001}
                   max={100000}
-                  onChange={(event, value) => {
-                    localStorage.setItem("distanceSlider", value);
-                    this.setState({ distanceSlider: value });
-                  }}
+                  onChangeCommitted={(event, value) => this.setState({ distanceSlider: value })}
                 />
               </Col>
             </Row>
@@ -129,7 +135,7 @@ class App extends React.Component {
                   <h4 className="custom-h4">Temperature</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("tempSlider")}
+                  defaultValue={this.state.tempSlider}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
@@ -137,10 +143,7 @@ class App extends React.Component {
                   marks
                   min={0}
                   max={60}
-                  onChange={(event, value) => {
-                    localStorage.setItem("tempSlider", value);
-                    this.setState({ tempSlider: value });
-                  }}
+                  onChangeCommitted={(event, value) => this.setState({ tempSlider: value })}
                 />
               </Col>
               <Col xs="12" md="4">
@@ -148,7 +151,7 @@ class App extends React.Component {
                   <h4 className="custom-h4">Temperature</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={0}
+                  defaultValue={this.state.slider4}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
@@ -156,10 +159,7 @@ class App extends React.Component {
                   marks
                   min={0}
                   max={100}
-                  onChange={(event, value) => {
-                    localStorage.setItem("slider4", value);
-                    this.setState({ slider4: value });
-                  }}
+                  onChangeCommitted={(event, value) => this.setState({ slider4: value })}
                 />
               </Col>
             </Row>
