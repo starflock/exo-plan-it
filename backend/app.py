@@ -10,6 +10,16 @@ default_app = initialize_app(cred)
 db = firestore.client()
 todo_ref = db.collection('todos')
 # import pdb; pdb.set_trace()
+
+
+@app.route('/', methods=['GET'])
+def home():
+    """
+        Landing Page
+    """
+    return jsonify({"Details": "Go to https://github.com/starflock/exo-plan-it"})
+
+
 @app.route('/add', methods=['POST'])
 def create():
     """
