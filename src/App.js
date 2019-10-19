@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.png';
+import logo from './Static/logo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
@@ -21,52 +21,74 @@ function App() {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to exoPlanIt
-        </p>
       </header>
+      <body className="App-body">
         <Container>
           <Row className="justify-content-md-center custom-row-spacing">
+            <img src={logo} className="App-logo" alt="logo" />
+          </Row>
+          <Row className="justify-content-md-center custom-row-spacing">
+            <h1 className="custom-h1">
+              Welcome to exoPlanIt
+            </h1>
+          </Row>
+          <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="2">
-              <Link to="/"><Button variant="primary" className ="full-width-btn">Reset</Button></Link>
+              <Link to="/"><Button variant="warning" className="full-width-btn">Reset</Button></Link>
             </Col>
             <Col xs lg="2">
-              <Link to="/create"><Button variant="primary" className ="full-width-btn">Create</Button></Link>
+              <Link to="/create"><Button variant="warning" className="full-width-btn">Create</Button></Link>
             </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="4">
-              <Button variant="primary" className ="full-width-btn">View Solar System</Button>
+              <Button variant="warning" className="full-width-btn">View Solar System</Button>
             </Col>
           </Row>
         </Container>
+      </body>
     </div>
   );
 }
 
 function Routing() {
-    return (
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <App />
-                </Route>
-                <Route path="/create">
-                    <Create />
-                </Route>
-            </Switch>
-        </Router>
-    )
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <App />
+        </Route>
+        <Route path="/create">
+          <Create />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
 function Create() {
-    return (
-        <div>
-            <h1>Hello World</h1>
-            <Link to="/"><Button variant="primary" className ="full-width-btn">Reset</Button></Link>
-        </div>
-    );
+  return (
+    <div className="App-body">
+      <Container>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <h1 className="custom-h1">Create Your Plannet</h1>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <Col xs lg="2">
+            <Button variant="warning" className="full-width-btn">Save</Button>
+          </Col>
+          <Col xs lg="2">
+            <Button variant="warning" className="full-width-btn">Try Again</Button>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center custom-row-spacing">
+          <Col xs lg="4">
+            <Link to="/"><Button variant="warning" className="full-width-btn">Homepage</Button></Link>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Routing;
