@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.1",
+    "@sentry/browser": "^5.7.1",
     "bootstrap": "^4.3.1",
     "material-ui-slider": "^3.0.8",
     "react": "^16.10.2",
