@@ -69,7 +69,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-## BACKEND
+## DEPLOY TO HEROKU
 
 https://exo-planet-starflock.herokuapp.com/
 
@@ -81,10 +81,3 @@ git push heroku master
 ```
 
 ## More Info https://devcenter.heroku.com/articles/git
-
-
-***Docker Commands***
-```
-sudo docker build -t exo_planet_backend .
-sudo docker run -it -p 5001:5001 exo_planet_backend
-```
