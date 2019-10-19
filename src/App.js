@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Sentry from '@sentry/browser';
 import logo from './Static/logo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,10 @@ import {
   Link
 } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
+
+Sentry.init({dsn: "https://1ff47f0de2b94685a7c54c4ee8641273@sentry.io/1784839"});
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
