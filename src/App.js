@@ -42,6 +42,7 @@ const marks = [
     label: '100°C',
   },
 ];
+
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -49,7 +50,7 @@ function valuetext(value) {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { slider1: 0, slider2: 0, slider3: 0, slider4: 0 }
+    this.state = { massSlider: 0.1, distanceSlider: 0, tempSlider: 0, slider4: 0 }
   }
 
   render() {
@@ -80,39 +81,39 @@ class App extends React.Component {
             <Row className="justify-content-md-center custom-row-spacing">
               <Col xs="12" md="4">
                 <Typography id="discrete-slider" gutterBottom>
-                  <h4 className="custom-h4">Temperature</h4>
+                  <h4 className="custom-h4">Solar Mass (M/Msun)</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("slider1")}
+                  defaultValue={localStorage.getItem("massSlider")}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
-                  step={10}
+                  step={.5}
                   marks
-                  min={0}
-                  max={100}
+                  min={0.1}
+                  max={60}
                   onChange={(event, value) => {
-                    localStorage.setItem("slider1", value);
-                    this.setState({ slider1: value });
+                    localStorage.setItem("massSlider", value);
+                    this.setState({ massSlider: value });
                   }}
                 />
               </Col>
               <Col xs="12" md="4">
                 <Typography id="discrete-slider" gutterBottom>
-                  <h4 className="custom-h4">Temperature</h4>
+                  <h4 className="custom-h4">Orbital Distance (AU)</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("slider2")}
+                  defaultValue={localStorage.getItem("distanceSlider")}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
                   step={10}
                   marks
-                  min={0}
-                  max={100}
+                  min={0.001}
+                  max={100000}
                   onChange={(event, value) => {
-                    localStorage.setItem("slider2", value);
-                    this.setState({ slider2: value });
+                    localStorage.setItem("distanceSlider", value);
+                    this.setState({ distanceSlider: value });
                   }}
                 />
               </Col>
@@ -123,17 +124,17 @@ class App extends React.Component {
                   <h4 className="custom-h4">Temperature</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("slider3")}
+                  defaultValue={localStorage.getItem("tempSlider")}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
                   step={10}
                   marks
                   min={0}
-                  max={100}
+                  max={60}
                   onChange={(event, value) => {
-                    localStorage.setItem("slider3", value);
-                    this.setState({ slider3: value });
+                    localStorage.setItem("tempSlider", value);
+                    this.setState({ tempSlider: value });
                   }}
                 />
               </Col>
@@ -142,7 +143,7 @@ class App extends React.Component {
                   <h4 className="custom-h4">Temperature</h4>
                 </Typography>
                 <AwesomeSlider
-                  defaultValue={localStorage.getItem("slider4")}
+                  defaultValue={0}
                   getAriaValueText={valuetext}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
