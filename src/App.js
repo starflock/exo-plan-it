@@ -46,112 +46,135 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossOrigin="anonymous"
-        />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      </header>
-      <body className="App-body">
-        <Container>
-          <Row className="center-box">
-            <figure className="App-figure">
-              <img src={logo} className="App-logo" alt="logo" />
-            </figure>
-          </Row>
-          <Row className="center-box custom-row-spacing">
-            <h1 className="custom-h1">
-              Welcome to exoPlanIt
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { slider1: 0, slider2: 0, slider3: 0, slider4: 0 }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossOrigin="anonymous"
+          />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        </header>
+        <div className="App-body">
+          <Container>
+            <Row className="center-box">
+              <figure className="App-figure">
+                <img src={logo} className="App-logo" alt="logo" />
+              </figure>
+            </Row>
+            <Row className="center-box custom-row-spacing">
+              <h1 className="custom-h1">
+                Welcome to exoPlanIt
             </h1>
-          </Row>
-          <div className="gutter"></div>
-          <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs="12" md="4">
-              <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
-              </Typography>
-              <AwesomeSlider
-                defaultValue={0}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="auto"
-                step={10}
-                marks
-                min={0}
-                max={100}
-              />
-            </Col>
-            <Col xs="12" md="4">
-              <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
-              </Typography>
-              <AwesomeSlider
-                defaultValue={0}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="auto"
-                step={10}
-                marks
-                min={0}
-                max={100}
-              />
-            </Col>
-          </Row>
-          <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs="12" md="4">
-              <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
-              </Typography>
-              <AwesomeSlider
-                defaultValue={0}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="auto"
-                step={10}
-                marks
-                min={0}
-                max={100}
-              />
-            </Col>
-            <Col xs="12" md="4">
-              <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Temperature</h4>
-              </Typography>
-              <AwesomeSlider
-                defaultValue={0}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="auto"
-                step={10}
-                marks
-                min={0}
-                max={100}
-              />
-            </Col>
-          </Row>
-          <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs lg="2">
-              <Link to="/"><Button variant="warning" className="full-width-btn">Reset</Button></Link>
-            </Col>
-            <Col xs lg="2">
-              <Link to="/create"><Button variant="warning" className="full-width-btn">Create</Button></Link>
-            </Col>
-          </Row>
-          <Row className="justify-content-md-center custom-row-spacing">
-            <Col xs lg="4">
-              <Link to="/solar"><Button variant="warning" className="full-width-btn">View Solar System</Button></Link>
-            </Col>
-          </Row>
-        </Container>
-      </body>
-    </div>
-  );
+            </Row>
+            <div className="gutter"></div>
+            <Row className="justify-content-md-center custom-row-spacing">
+              <Col xs="12" md="4">
+                <Typography id="discrete-slider" gutterBottom>
+                  <h4 className="custom-h4">Temperature</h4>
+                </Typography>
+                <AwesomeSlider
+                  defaultValue={localStorage.getItem("slider1")}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={10}
+                  marks
+                  min={0}
+                  max={100}
+                  onChange={(event, value) => {
+                    localStorage.setItem("slider1", value);
+                    this.setState({ slider1: value });
+                  }}
+                />
+              </Col>
+              <Col xs="12" md="4">
+                <Typography id="discrete-slider" gutterBottom>
+                  <h4 className="custom-h4">Temperature</h4>
+                </Typography>
+                <AwesomeSlider
+                  defaultValue={localStorage.getItem("slider2")}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={10}
+                  marks
+                  min={0}
+                  max={100}
+                  onChange={(event, value) => {
+                    localStorage.setItem("slider2", value);
+                    this.setState({ slider2: value });
+                  }}
+                />
+              </Col>
+            </Row>
+            <Row className="justify-content-md-center custom-row-spacing">
+              <Col xs="12" md="4">
+                <Typography id="discrete-slider" gutterBottom>
+                  <h4 className="custom-h4">Temperature</h4>
+                </Typography>
+                <AwesomeSlider
+                  defaultValue={localStorage.getItem("slider3")}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={10}
+                  marks
+                  min={0}
+                  max={100}
+                  onChange={(event, value) => {
+                    localStorage.setItem("slider3", value);
+                    this.setState({ slider3: value });
+                  }}
+                />
+              </Col>
+              <Col xs="12" md="4">
+                <Typography id="discrete-slider" gutterBottom>
+                  <h4 className="custom-h4">Temperature</h4>
+                </Typography>
+                <AwesomeSlider
+                  defaultValue={localStorage.getItem("slider4")}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={10}
+                  marks
+                  min={0}
+                  max={100}
+                  onChange={(event, value) => {
+                    localStorage.setItem("slider4", value);
+                    this.setState({ slider4: value });
+                  }}
+                />
+              </Col>
+            </Row>
+            <Row className="justify-content-md-center custom-row-spacing">
+              <Col xs lg="2">
+                <Link to="/"><Button variant="warning" className="full-width-btn">Reset</Button></Link>
+              </Col>
+              <Col xs lg="2">
+                <Link to="/create"><Button variant="warning" className="full-width-btn">Create</Button></Link>
+              </Col>
+            </Row>
+            <Row className="justify-content-md-center custom-row-spacing">
+              <Col xs lg="4">
+                <Link to="/solar"><Button variant="warning" className="full-width-btn">View Solar System</Button></Link>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </div>
+    );
+  }
 }
 
 function Routing() {
