@@ -90,7 +90,7 @@ function App() {
             </Col>
             <Col xs="12" md="4">
               <Typography id="discrete-slider" gutterBottom>
-                <h4 className="custom-h4">Orbital Distance</h4>
+                <h4 className="custom-h4">Orbital Distance (AU)</h4>
               </Typography>
               <AwesomeSlider
                 defaultValue={0}
