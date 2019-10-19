@@ -8,7 +8,7 @@ app = Flask(__name__)
 cred = credentials.Certificate('starflock-exo-planet-firebase-key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
-todo_ref = db.collection('todos')
+user_planet_config_table = db.collection('users_planet_configurations')
 # import pdb; pdb.set_trace()
 
 
@@ -20,23 +20,55 @@ def home():
     return jsonify({"Details": "Go to https://github.com/starflock/exo-plan-it"})
 
 
-@app.route('/add', methods=['POST'])
-def create():
+@app.route('/create_user', methods=['POST'])
+def create_user():
     """
         create() : Add document to Firestore collection with request body
         Ensure you pass a custom ID as part of json body in post request
         e.g. json={'id': '1', 'title': 'Write a blog post'}
     """
     try:
-        id = request.json['id']
-        todo_ref.document(id).set(request.json)
+        username = request.json['username']
+        if not username:
+            return jsonify({"Error": "username is required."}, 400)
+        user = get_user_from_db(username)
+        if user:
+            update_user_db(username, request)
+            return jsonify({"success": True}), 200
+        user_planet_config_table.document(username).set(request.json)
         return jsonify({"success": True}), 200
     except Exception as e:
         return f"An Error Occured: {e}"
 
 
-@app.route('/list', methods=['GET'])
-def read():
+def update_user_db(username, request):
+    user_planet_config_table.document(username).update(request.json)
+
+
+@app.route('/update_user', methods=['POST', 'PUT'])
+def update_user():
+    """
+        update() : Update document in Firestore collection with request body
+        Ensure you pass a custom ID as part of json body in post request
+        e.g. json={'id': '1', 'title': 'Write a blog post today'}
+    """
+    try:
+        username = request.json['username']
+        if not username:
+            return jsonify({"Error": "username is required."}, 400)
+        update_user_db(username, request)
+        return jsonify({"success": True}), 200
+    except Exception as e:
+        return f"An Error Occured: {e}"
+
+
+def get_user_from_db(username):
+    user = user_planet_config_table.document(username).get()
+    return user.to_dict()
+
+
+@app.route('/get_user', methods=['GET'])
+def get_user():
     """
         read() : Fetches documents from Firestore collection as JSON
         todo : Return document that matches query ID
@@ -44,28 +76,29 @@ def read():
     """
     try:
         # Check if ID was passed to URL query
-        todo_id = request.args.get('id')
-        if todo_id:
-            todo = todo_ref.document(todo_id).get()
-            return jsonify(todo.to_dict()), 200
-        else:
-            all_todos = [doc.to_dict() for doc in todo_ref.stream()]
-            return jsonify(all_todos), 200
+        username = request.args.get('username')
+        if username:
+            user = get_user_from_db(username)
+            if user:
+                return jsonify(user), 200
+            else:
+                return jsonify({"Error": "User does not exist."}, 400)
+
+        return jsonify({"Error": "username is required."}, 400)
     except Exception as e:
         return f"An Error Occured: {e}"
 
 
-@app.route('/update', methods=['POST', 'PUT'])
-def update():
+@app.route('/get_all_users', methods=['GET'])
+def get_all_users():
     """
-        update() : Update document in Firestore collection with request body
-        Ensure you pass a custom ID as part of json body in post request
-        e.g. json={'id': '1', 'title': 'Write a blog post today'}
+        read() : Fetches documents from Firestore collection as JSON
+        todo : Return document that matches query ID
+        all_todos : Return all documents
     """
     try:
-        id = request.json['id']
-        todo_ref.document(id).update(request.json)
-        return jsonify({"success": True}), 200
+        all_users = [doc.to_dict() for doc in user_planet_config_table.stream()]
+        return jsonify(all_users), 200
     except Exception as e:
         return f"An Error Occured: {e}"
 
@@ -76,9 +109,10 @@ def delete():
         delete() : Delete a document from Firestore collection
     """
     try:
-        # Check for ID in URL query
-        todo_id = request.args.get('id')
-        todo_ref.document(todo_id).delete()
+        username = request.json['username']
+        if not username:
+            return jsonify({"Error": "username is required."}, 400)
+        user_planet_config_table.document(username).delete()
         return jsonify({"success": True}), 200
     except Exception as e:
         return f"An Error Occured: {e}"
