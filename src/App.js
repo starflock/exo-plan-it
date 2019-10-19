@@ -4,12 +4,46 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import { Container, Grid, Row, Col } from 'react-bootstrap';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: 300,
+  },
+  margin: {
+    height: theme.spacing(3),
+  },
+}));
+
+const marks = [
+  {
+    value: 0,
+    label: '0°C',
+  },
+  {
+    value: 20,
+    label: '20°C',
+  },
+  {
+    value: 37,
+    label: '37°C',
+  },
+  {
+    value: 100,
+    label: '100°C',
+  },
+];
+function valuetext(value) {
+  return `${value}°C`;
+}
 
 function App() {
   return (
@@ -24,6 +58,19 @@ function App() {
       </header>
       <body className="App-body">
         <Container>
+            <Typography id="discrete-slider" gutterBottom>
+                Temperature
+            </Typography>
+            <Slider
+                defaultValue={30}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={10}
+                max={110}
+            />
           <Row className="justify-content-md-center custom-row-spacing">
             <img src={logo} className="App-logo" alt="logo" />
           </Row>
