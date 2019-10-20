@@ -204,7 +204,6 @@ class PlanetView extends Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.handleWindowResize);
         window.cancelAnimationFrame(this.requestID);
-        this.controls.dispose();
     }
 
     // Standard scene setup in Three.js. Check "Creating a scene" manual for more information
