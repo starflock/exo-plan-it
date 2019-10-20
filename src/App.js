@@ -265,10 +265,14 @@ function Login() {
                         <Link to="/"><Button variant="warning" className="full-width-btn">Back</Button></Link>
                     </Col>
                     <Col xs lg="2">
+                        <Link to="/"><Button variant="warning" className="full-width-btn">Sign Up</Button></Link>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center custom-row-spacing">
+                    <Col xs lg="4">
                         <Link to="/"><Button variant="warning" className="full-width-btn">Submit</Button></Link>
                     </Col>
                 </Row>
-
             </Container>
         </div>
     );
