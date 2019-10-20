@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {FormErrors} from './FormErrors';
+import { FormErrors } from './FormErrors';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import ViewAllPlanets from './Components/ViewAllPlanets';
@@ -98,6 +98,15 @@ class App extends React.Component {
     localStorage.setItem("distanceSlider", this.distanceSlider);
     localStorage.setItem("tempSlider", this.tempSlider);
     localStorage.setItem("slider4", this.slider4);
+  }
+
+  scaleToLogarithmic(sliderPosition, minSlider, maxSlider, minLog, maxLog) {
+    var minv = Math.log(minLog);
+    var maxv = Math.log(maxLog);
+
+    var scale = (maxv - minv) / (minSlider - maxSlider);
+
+    return Math.exp(minv + scale * (sliderPosition - minSlider));
   }
 
   render() {
@@ -197,9 +206,9 @@ class App extends React.Component {
               <Col xs lg="2">
                 <Link to="/login"><Button variant="warning" className="full-width-btn">Login</Button></Link>
               </Col>
-                <Col xs lg="2">
-                    <Link to="/viewallplanets"><Button variant="warning" className="full-width-btn">View  All Planets</Button></Link>
-                </Col>
+              <Col xs lg="2">
+                <Link to="/viewallplanets"><Button variant="warning" className="full-width-btn">View  All Planets</Button></Link>
+              </Col>
             </Row>
           </Container>
         </div>
