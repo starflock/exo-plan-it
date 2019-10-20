@@ -92,8 +92,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    localStorage.setItem("massSlider", this.massSlider);
-    localStorage.setItem("distanceSlider", this.distanceSlider);
+    localStorage.setItem("massSlider", this.state.massSlider);
+    localStorage.setItem("distanceSlider", this.state.distanceSlider);
   }
 
   scaleToLogarithmic(sliderPosition, minSlider, maxSlider, minLog, maxLog) {
