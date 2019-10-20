@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import PlanetView from '../PlanetView';
 import {
     BrowserRouter as Router,
     Link
@@ -9,20 +10,32 @@ import {
 class SignUp extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      toViewPlanet: false,
+    }
   }
+
   handleSubmit(event) {
       event.preventDefault();
       const data = new FormData(event.target);
-      alert(data.get("password"))
-      alert(localStorage.getItem("massSlider"))
-      alert(localStorage.getItem("planetName"))
+      localStorage.setItem("username", data.get("username"));
+      localStorage.setItem("password", data.get("password"));
 
-      fetch('/api/form-submit-url', {
+      fetch('https://exo-planet-starflock-backend.herokuapp.com/create_user', {
         method: 'POST',
-        body: data,
-      });
+        body: JSON.stringify(localStorage),
+        headers: {
+          'Content-Type':'application/json'
+        }
+      }).then(response => {
+        window.location.href = "/view";
+    })
+
     }
     render () {
+      if (this.state.toViewPlanet === true) {
+      return <PlanetView to='/view' />
+    }
         return (
           <form onSubmit={this.handleSubmit}>
             <div className="App-body">
