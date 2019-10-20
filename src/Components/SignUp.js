@@ -14,6 +14,8 @@ class SignUp extends Component {
       event.preventDefault();
       const data = new FormData(event.target);
       alert(data.get("password"))
+      alert(localStorage.getItem("massSlider"))
+      alert(localStorage.getItem("planetName"))
 
       fetch('/api/form-submit-url', {
         method: 'POST',
