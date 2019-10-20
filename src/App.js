@@ -28,28 +28,52 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const marks = [
+const solar_mass_marks = [
     {
-        value: 0,
-        label: '0°C',
+        value: 1,
+        label: '0.1',
     },
     {
-        value: 20,
-        label: '20°C',
+        value: 2,
+        label: '0.5',
     },
     {
-        value: 37,
-        label: '37°C',
+        value: 3,
+        label: '0.75',
     },
     {
-        value: 100,
-        label: '100°C',
+        value: 4,
+        label: '1.0',
+    },
+    {
+	value: 5,
+	label: '1.5',
+    },
+    {
+        value: 6,
+        label: '3',
+    },
+    {
+        value: 7,
+        label: '5',
+    },
+    {
+        value: 8,
+        label: '10',
+    },
+    {
+        value: 9,
+        label: '15',
+    },
+    {
+	value: 10,
+	label: '25',
+    },
+    {
+	value: 11,
+	label: '50',
     }
 ];
-
-function valuetext(value) {
-    return `${value}°C`;
-}
 
 class App extends React.Component {
     constructor(props) {
@@ -101,13 +125,12 @@ class App extends React.Component {
                                 </Typography>
                                 <AwesomeSlider
                                     defaultValue={this.state.massSlider}
-                                    getAriaValueText={valuetext}
                                     aria-labelledby="discrete-slider"
-                                    valueLabelDisplay="auto"
-                                    step={.5}
-                                    marks
-                                    min={0.1}
-                                    max={60}
+                                    valueLabelDisplay="off"
+                                    step={null}
+                                    marks={solar_mass_marks}
+				    min={1}
+				    max={11}
                                     onChangeCommitted={(event, value) => this.setState({ massSlider: value })}/>
                             </Col>
                             <Col xs="12" md="4">
@@ -116,7 +139,6 @@ class App extends React.Component {
                                 </Typography>
                                 <AwesomeSlider
                                     defaultValue={this.state.distanceSlider}
-                                    getAriaValueText={valuetext}
                                     aria-labelledby="discrete-slider"
                                     valueLabelDisplay="auto"
                                     step={10}
@@ -133,7 +155,6 @@ class App extends React.Component {
                                 </Typography>
                                 <AwesomeSlider
                                     defaultValue={this.state.tempSlider}
-                                    getAriaValueText={valuetext}
                                     aria-labelledby="discrete-slider"
                                     valueLabelDisplay="auto"
                                     step={10}
@@ -148,7 +169,6 @@ class App extends React.Component {
                                 </Typography>
                                 <AwesomeSlider
                                     defaultValue={this.state.slider4}
-                                    getAriaValueText={valuetext}
                                     aria-labelledby="discrete-slider"
                                     valueLabelDisplay="auto"
                                     step={10}
