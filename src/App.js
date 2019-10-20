@@ -187,7 +187,7 @@ class App extends React.Component {
                 <Link to="/"><Button variant="warning" className="full-width-btn">Reset</Button></Link>
               </Col>
               <Col xs lg="2">
-                <Link to="/create"><Button variant="warning" className="full-width-btn">Create</Button></Link>
+                <Link to="/login"><Button variant="warning" className="full-width-btn">Create</Button></Link>
               </Col>
             </Row>
             <Row className="justify-content-md-center custom-row-spacing">
