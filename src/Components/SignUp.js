@@ -5,30 +5,25 @@ import {
     BrowserRouter as Router,
     Link
   } from "react-router-dom";
-	
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      username: localStorage.getItem("username") || "",
-      password: localStorage.getItem("password") || ""
+  }
+  handleSubmit(event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      alert(data.get("password"))
+
+      fetch('/api/form-submit-url', {
+        method: 'POST',
+        body: data,
+      });
     }
-  }
-  componentDidUpdate() {
-    localStorage.setItem("username", this.username);
-    localStorage.setItem("password", this.password);
-  }
-    handleSubmit(event) {
-        alert('A username was submitted: ' + localStorage.getItem('username'));
-		alert('A password was submitted: ' + this.state.username);
-		alert('A password was submitted: ' + this.username);
-		event.preventDefault();
-	}
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-                <div className="App-body">
+    render () {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <div className="App-body">
                 <Container>
                     <Row className="justify-content-md-center custom-row-spacing">
                     <Col xs lg="4">
@@ -36,8 +31,7 @@ class Login extends Component {
                         <input
                         className="form-control"
                         type="input"
-                        name="username"
-                        onChangeCommitted={(event, value) => this.setState({ username: value })} />
+                        name="username" />
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
@@ -46,13 +40,12 @@ class Login extends Component {
                         <input
                         className="form-control"
                         type="password"
-                        name="password"
-                        onChangeCommitted={(event, value) => this.setState({ password: value })} />
+                        name="password" />
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
                     <Col xs lg="2">
-                        <Button type="submit" variant="warning" className="full-width-btn">Login</Button>
+                        <Button type="submit" variant="warning" className="full-width-btn">Sign Up</Button>
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
@@ -61,10 +54,10 @@ class Login extends Component {
                     </Col>
                     </Row>
                 </Container>
-                </div >
+            </div >
             </form>
-        );
+          );
     }
 }
 
-export default Login;
+export default SignUp;
