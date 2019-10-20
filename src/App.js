@@ -282,10 +282,10 @@ function Login() {
                 </Row>
                 <Row className="justify-content-md-center custom-row-spacing">
                     <Col xs lg="2">
-                        <Link to="/"><Button variant="warning" className="full-width-btn">Sign Up</Button></Link>
+                        <Link to="/create_user"><Button variant="warning" className="full-width-btn">Sign Up</Button></Link>
                     </Col>
                     <Col xs lg="2">
-                        <Link to="/"><Button variant="warning" className="full-width-btn">Submit</Button></Link>
+                        <Link to="/get_user"><Button variant="warning" className="full-width-btn">Submit</Button></Link>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center custom-row-spacing">
