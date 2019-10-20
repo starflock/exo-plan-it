@@ -247,7 +247,7 @@ class PlanetView extends Component {
     drawPlanet = (seed) => {
         const material = new THREE.ShaderMaterial( {
             uniforms: {
-                habitable: {
+                habitableU: {
                     type: "b",
                     value: this.props.isHabitable
                 }
@@ -257,7 +257,7 @@ class PlanetView extends Component {
         } );
 
         const mesh = new THREE.Mesh(
-            new THREE.IcosahedronGeometry(20, 5),
+            new THREE.IcosahedronGeometry(20, 7),
             material
         );
 
@@ -292,7 +292,7 @@ class PlanetView extends Component {
         return (
             <div className="App-body">
                 <Container> 
-                <div style={style} ref={ref => (this.el = ref)} />;
+                    <div style={style} ref={ref => (this.el = ref)} />;
                 </Container>
             </div>
         );
