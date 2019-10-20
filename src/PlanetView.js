@@ -193,8 +193,8 @@ uniform bool habitableU;
 
 void main() {
     
-    vec2 notHabitable = (0.9 * vUv) + vec2(0.5, 0.1);
-    vec2 habitable = (0.9 * vUv) + vec2(0.1, 0.5);
+    vec2 notHabitable = (0.4 * vUv) + vec2(0.6, 0.1);
+    vec2 habitable = (0.4 * vUv) + vec2(0.1, 0.6);
 
     vec3 habitableColor = vec3( habitable * ( 1. - 1.5 * noise), 0.0 );
     vec3 notHabitableColor = vec3( notHabitable * ( 1. - 1.5 * noise), 0.0 );
@@ -250,7 +250,7 @@ class PlanetView extends Component {
             uniforms: {
                 habitable: {
                     type: "b",
-                    value: this.props.habitable
+                    value: this.props.isHabitable
                 }
             },
             vertexShader: vertexShader,
