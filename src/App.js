@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import {FormErrors} from './FormErrors';
 import Login from './Components/Login';
+import SignUp from './Components/SignUp';
 import SolarSystem from './Components/Solar';
 import CreatePlanet from './Components/PlanetCreation';
 import {
@@ -220,8 +221,8 @@ function Routing() {
         <Route path="/solar">
           <SolarSystem />
         </Route>
-        <Route path="/login">
-          <Login />
+        <Route path="/signup">
+          <SignUp />
         </Route>
       </Switch>
     </Router>
