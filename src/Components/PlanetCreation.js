@@ -10,13 +10,15 @@ class CreatePlanet extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      planetName: localStorage.getItem("planetName") || "",
-    }
+      planetName: localStorage.getItem("planetName") || ""
+    };
   }
 
-  componentDidUpdate() {
-    localStorage.setItem("planetName", this.planetName);
-  }
+  onChange = event => {
+      const planetName = event.target.value;
+      localStorage.setItem("planetName", planetName);
+      this.setState({ planetName });
+    };
   render() {
     return (
       <div className="App-body">
@@ -28,11 +30,11 @@ class CreatePlanet extends Component {
             <Col xs lg="4">
               <label style={{ color: '#CCCC00', fontWeight: 'bold', fontSize: '150%' }}>Planet Name</label>
               <input
-                defaultValue={this.state.planetName}
                 className="form-control"
                 type="input"
-                name="planetName"
-                onChangeCommitted={(event, value) => this.setState({ planetName: value })}/>
+                value={this.state.planetName}
+                onChange={this.onChange}
+                name="planetName"/>
             </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">

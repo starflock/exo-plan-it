@@ -88,16 +88,12 @@ class App extends React.Component {
     this.state = {
       massSlider: localStorage.getItem("massSlider") || 0.1,
       distanceSlider: localStorage.getItem("distanceSlider") || 0,
-      tempSlider: localStorage.getItem("tempSlider") || 0,
-      slider4: localStorage.getItem("slider4") || 0
     }
   }
 
   componentDidUpdate() {
     localStorage.setItem("massSlider", this.massSlider);
     localStorage.setItem("distanceSlider", this.distanceSlider);
-    localStorage.setItem("tempSlider", this.tempSlider);
-    localStorage.setItem("slider4", this.slider4);
   }
 
   scaleToLogarithmic(sliderPosition, minSlider, maxSlider, minLog, maxLog) {
@@ -162,36 +158,6 @@ class App extends React.Component {
                   min={0.001}
                   max={100000}
                   onChangeCommitted={(event, value) => this.setState({ distanceSlider: value })} />
-              </Col>
-            </Row>
-            <Row className="justify-content-md-center custom-row-spacing">
-              <Col xs="12" md="4">
-                <Typography id="discrete-slider" gutterBottom>
-                  <h4 className="custom-h4">Temperature</h4>
-                </Typography>
-                <AwesomeSlider
-                  defaultValue={this.state.tempSlider}
-                  aria-labelledby="discrete-slider"
-                  valueLabelDisplay="auto"
-                  step={10}
-                  marks
-                  min={0}
-                  max={60}
-                  onChangeCommitted={(event, value) => this.setState({ tempSlider: value })} />
-              </Col>
-              <Col xs="12" md="4">
-                <Typography id="discrete-slider" gutterBottom>
-                  <h4 className="custom-h4">Temperature</h4>
-                </Typography>
-                <AwesomeSlider
-                  defaultValue={this.state.slider4}
-                  aria-labelledby="discrete-slider"
-                  valueLabelDisplay="auto"
-                  step={10}
-                  marks
-                  min={0}
-                  max={100}
-                  onChangeCommitted={(event, value) => this.setState({ slider4: value })} />
               </Col>
             </Row>
             <Row className="justify-content-md-center custom-row-spacing">
