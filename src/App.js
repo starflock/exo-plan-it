@@ -100,9 +100,22 @@ class App extends React.Component {
     var minv = Math.log(minLog);
     var maxv = Math.log(maxLog);
 
-    var scale = (maxv - minv) / (minSlider - maxSlider);
+    console.log(minv);
+    console.log(maxv);
+
+    var scale = (maxv - minv) / (maxSlider - minSlider);
+
+    console.log(scale);
 
     return Math.exp(minv + scale * (sliderPosition - minSlider));
+  }
+
+  scaleToLogarithmicMass(sliderPosition) {
+    return this.scaleToLogarithmic(sliderPosition, 1, 11, 0.1, 50).toFixed(3);
+  }
+
+  scaleToLogarithmicDistance(sliderPosition) {
+    return this.scaleToLogarithmic(sliderPosition, 1, 11, 0.001, 100000).toFixed(3);
   }
 
   render() {
@@ -138,9 +151,9 @@ class App extends React.Component {
                 <AwesomeSlider
                   defaultValue={this.state.massSlider}
                   aria-labelledby="discrete-slider"
-                  valueLabelDisplay="off"
-                  step={null}
-                  marks={solar_mass_marks}
+                  valueLabelDisplay="auto"
+                  valueLabelFormat={this.scaleToLogarithmicMass.bind(this)}
+                  step={1}
                   min={1}
                   max={11}
                   onChangeCommitted={(event, value) => this.setState({ massSlider: value })} />
@@ -153,10 +166,10 @@ class App extends React.Component {
                   defaultValue={this.state.distanceSlider}
                   aria-labelledby="discrete-slider"
                   valueLabelDisplay="auto"
-                  step={10}
-                  marks
-                  min={0.001}
-                  max={100000}
+                  valueLabelFormat={this.scaleToLogarithmicDistance.bind(this)}
+                  step={1}
+                  min={1}
+                  max={11}
                   onChangeCommitted={(event, value) => this.setState({ distanceSlider: value })} />
               </Col>
             </Row>
