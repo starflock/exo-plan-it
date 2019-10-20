@@ -46,8 +46,8 @@ const solar_mass_marks = [
         label: '1.0',
     },
     {
-	value: 5,
-	label: '1.5',
+        value: 5,
+        label: '1.5',
     },
     {
         value: 6,
@@ -66,12 +66,12 @@ const solar_mass_marks = [
         label: '15',
     },
     {
-	value: 10,
-	label: '25',
+        value: 10,
+        label: '25',
     },
     {
-	value: 11,
-	label: '50',
+        value: 11,
+        label: '50',
     }
 ];
 
@@ -129,8 +129,8 @@ class App extends React.Component {
                                     valueLabelDisplay="off"
                                     step={null}
                                     marks={solar_mass_marks}
-				    min={1}
-				    max={11}
+                                    min={1}
+                                    max={11}
                                     onChangeCommitted={(event, value) => this.setState({ massSlider: value })}/>
                             </Col>
                             <Col xs="12" md="4">
