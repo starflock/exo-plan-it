@@ -7,26 +7,22 @@ import {
   } from "react-router-dom";
 
 class SignUp extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            username: localStorage.getItem("username") || "",
-            password: localStorage.getItem("password") || ""
-        }
-    }
+  constructor(props) {
+    super(props)
+  }
+  handleSubmit(event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      alert(data.get("password"))
 
-    componentDidUpdate() {
-        localStorage.setItem("username", this.username);
-        localStorage.setItem("password", this.password);
+      fetch('/api/form-submit-url', {
+        method: 'POST',
+        body: data,
+      });
     }
-
-    handleClick(event) {
-        alert(localStorage.getItem('username'));
-        alert(localStorage[0]);
-    }
-    
     render () {
         return (
+          <form onSubmit={this.handleSubmit}>
             <div className="App-body">
                 <Container>
                     <Row className="justify-content-md-center custom-row-spacing">
@@ -35,8 +31,7 @@ class SignUp extends Component {
                         <input
                         className="form-control"
                         type="input"
-                        name="username"
-                        onChangeCommitted={(event, value) => this.setState({ username: value })} />
+                        name="username" />
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
@@ -45,13 +40,12 @@ class SignUp extends Component {
                         <input
                         className="form-control"
                         type="password"
-                        name="password"
-                        onChangeCommitted={(event, value) => this.setState({ password: value })} />
+                        name="password" />
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
                     <Col xs lg="2">
-                        <Button type="submit" onClick={this.handleClick} variant="warning" className="full-width-btn">Sign Up</Button>
+                        <Button type="submit" variant="warning" className="full-width-btn">Sign Up</Button>
                     </Col>
                     </Row>
                     <Row className="justify-content-md-center custom-row-spacing">
@@ -61,6 +55,7 @@ class SignUp extends Component {
                     </Row>
                 </Container>
             </div >
+            </form>
           );
     }
 }
