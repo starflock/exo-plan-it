@@ -216,7 +216,7 @@ function Routing() {
           <Login />
         </Route>
         <Route path="/view">
-          <PlanetView seed={1} />
+          <PlanetView isHabitable={true} />
         </Route>
         <Route path="/viewallplanets">
           <ViewAllPlanets />
