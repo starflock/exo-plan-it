@@ -37,7 +37,7 @@ class CreatePlanet extends Component {
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">
             <Col xs lg="2">
-              <Button variant="warning" className="full-width-btn">Save</Button>
+              <Link to="/signup"><Button variant="warning" className="full-width-btn">Save</Button></Link>
             </Col>
           </Row>
           <Row className="justify-content-md-center custom-row-spacing">

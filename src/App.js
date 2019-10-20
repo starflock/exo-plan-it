@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {FormErrors} from './FormErrors';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
+import ViewAllPlanets from './Components/ViewAllPlanets';
 import SolarSystem from './Components/Solar';
 import CreatePlanet from './Components/PlanetCreation';
 import {
@@ -188,18 +189,16 @@ class App extends React.Component {
                 <Link to="/"><Button variant="warning" className="full-width-btn">Reset</Button></Link>
               </Col>
               <Col xs lg="2">
-                <Link to="/login"><Button variant="warning" className="full-width-btn">Create</Button></Link>
+                <Link to="/create"><Button variant="warning" className="full-width-btn">Create</Button></Link>
               </Col>
             </Row>
             <Row className="justify-content-md-center custom-row-spacing">
-              <Col xs lg="4">
-                <Link to="/solar"><Button variant="warning" className="full-width-btn">View Solar System</Button></Link>
-              </Col>
-            </Row>
-            <Row className="justify-content-md-center custom-row-spacing">
-              <Col xs lg="4">
+              <Col xs lg="2">
                 <Link to="/login"><Button variant="warning" className="full-width-btn">Login</Button></Link>
               </Col>
+                <Col xs lg="2">
+                    <Link to="/viewallplanets"><Button variant="warning" className="full-width-btn">View  All Planets</Button></Link>
+                </Col>
             </Row>
           </Container>
         </div>
@@ -223,6 +222,12 @@ function Routing() {
         </Route>
         <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/viewallplanets">
+          <ViewAllPlanets />
         </Route>
       </Switch>
     </Router>
