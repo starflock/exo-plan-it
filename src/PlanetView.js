@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from 'react-bootstrap';
+
 import * as THREE from "three";
 
 const style = {
@@ -187,9 +189,23 @@ void main() {
 const fragmentShader = `
 varying vec2 vUv;
 varying float noise;
+uniform bool habitableU;
+
 void main() {
-    vec3 color = vec3( vUv * ( 1. - 1.5 * noise ), 0.0 );
-    gl_FragColor = vec4( color.rgb, 1.0 );
+    
+    vec2 notHabitable = (0.9 * vUv) + vec2(0.5, 0.1);
+    vec2 habitable = (0.9 * vUv) + vec2(0.1, 0.5);
+
+    vec3 habitableColor = vec3( habitable * ( 1. - 1.5 * noise), 0.0 );
+    vec3 notHabitableColor = vec3( notHabitable * ( 1. - 1.5 * noise), 0.0 );
+
+    if(habitableU) {
+        gl_FragColor = vec4( habitableColor.rgb, 1.0 );
+    } 
+    else {
+        gl_FragColor = vec4( notHabitableColor.rgb, 1.0 );
+    }
+
 }
 `
 
@@ -231,6 +247,12 @@ class PlanetView extends Component {
 
     drawPlanet = (seed) => {
         const material = new THREE.ShaderMaterial( {
+            uniforms: {
+                habitable: {
+                    type: "b",
+                    value: this.props.habitable
+                }
+            },
             vertexShader: vertexShader,
             fragmentShader: fragmentShader
         } );
@@ -268,7 +290,13 @@ class PlanetView extends Component {
     };
 
     render() {
-        return <div style={style} ref={ref => (this.el = ref)} />;
+        return (
+            <div className="App-body">
+                <Container> 
+                <div style={style} ref={ref => (this.el = ref)} />;
+                </Container>
+            </div>
+        );
     }
 }
 
