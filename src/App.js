@@ -12,6 +12,7 @@ import {FormErrors} from './FormErrors';
 import Login from './Components/Login';
 import SolarSystem from './Components/Solar';
 import CreatePlanet from './Components/PlanetCreation';
+import PlanetView from './PlanetView';
 import {
   BrowserRouter as Router,
   Switch,
@@ -222,6 +223,9 @@ function Routing() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/view">
+          <PlanetView seed={1} />
         </Route>
       </Switch>
     </Router>
