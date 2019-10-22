@@ -1,7 +1,7 @@
 # NASA Space Apps Challenge Hackathon
 **Project Link**
 https://2019.spaceappschallenge.org/challenges/planets-near-and-far/build-planet-workshop/teams/starflock/project
-
+https://docs.google.com/presentation/d/1fBOi2hf59dSndFoDf7r0PE8IZKEXlFvkl7tnIsrKy5Y/edit?usp=sharing
 **Back End** https://github.com/starflock/exo_planet_back_end
 
 
